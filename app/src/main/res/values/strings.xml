@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cascade</string>
+    <string name="notification_listener_label">Cascade notification dots</string>
+    <string name="action_failed">Couldn\'t open that</string>
+</resources>

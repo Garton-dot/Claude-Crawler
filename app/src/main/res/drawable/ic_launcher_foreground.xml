@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Four list rows bulging to the left: the alphabet "wave" the launcher is built around. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path android:fillColor="#7FD4FF" android:pathData="M44,35h26a3,3 0 0,1 0,6h-26a3,3 0 0,1 0,-6z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M36,46h34a3,3 0 0,1 0,6h-34a3,3 0 0,1 0,-6z" />
+    <path android:fillColor="#FFFFFF" android:pathData="M38,57h32a3,3 0 0,1 0,6h-32a3,3 0 0,1 0,-6z" />
+    <path android:fillColor="#7FD4FF" android:pathData="M46,68h24a3,3 0 0,1 0,6h-24a3,3 0 0,1 0,-6z" />
+</vector>
