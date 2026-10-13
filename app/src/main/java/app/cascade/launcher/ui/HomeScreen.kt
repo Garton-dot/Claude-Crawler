@@ -26,6 +26,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -61,18 +62,20 @@ fun HomeScreen(
 ) {
     val context = LocalContext.current
     val thresholdPx = with(LocalDensity.current) { 72.dp.toPx() }
+    val currentSettings by rememberUpdatedState(settings)
+    val currentOnOpenDrawer by rememberUpdatedState(onOpenDrawer)
 
     Column(
         Modifier
             .fillMaxSize()
-            .pointerInput(settings, onOpenDrawer) {
+            .pointerInput(Unit) {
                 var total = 0f
                 detectVerticalDragGestures(
                     onDragStart = { total = 0f },
                     onDragEnd = {
                         when {
-                            total < -thresholdPx -> onOpenDrawer(settings.autoOpenKeyboard)
-                            total > thresholdPx && settings.swipeDownForNotifications ->
+                            total < -thresholdPx -> currentOnOpenDrawer(currentSettings.autoOpenKeyboard)
+                            total > thresholdPx && currentSettings.swipeDownForNotifications ->
                                 Actions.expandNotifications(context)
                         }
                     },
