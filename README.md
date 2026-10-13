@@ -23,6 +23,9 @@ derived from, or endorsed by Niagara Launcher or its developers.
 - **Per-app actions** – favorite, reorder favorites, rename, hide, app info, uninstall.
 - **Gestures** – swipe up for all apps, swipe down for the notification shade, pull down
   at the top of the list to close it.
+- **Dynamic theming** – the highlight color (letters, dots, switches) follows your
+  wallpaper's dominant color on Android 8.1+ and updates when you change wallpaper.
+  Can be turned off in settings.
 - **Work profile** support, wallpaper dimming, toggle icons on/off for a text-only look.
 
 ## Install

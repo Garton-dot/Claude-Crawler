@@ -9,6 +9,7 @@ data class LauncherSettings(
     val swipeDownForNotifications: Boolean = true,
     val autoOpenKeyboard: Boolean = false,
     val dimWallpaper: Boolean = true,
+    val dynamicColor: Boolean = true,
 )
 
 /** Everything the launcher remembers, in one SharedPreferences file. */
@@ -42,6 +43,7 @@ class Prefs(context: Context) {
             swipeDownForNotifications = sp.getBoolean("swipeDownForNotifications", true),
             autoOpenKeyboard = sp.getBoolean("autoOpenKeyboard", false),
             dimWallpaper = sp.getBoolean("dimWallpaper", true),
+            dynamicColor = sp.getBoolean("dynamicColor", true),
         )
         set(value) = sp.edit()
             .putBoolean("showIcons", value.showIcons)
@@ -50,6 +52,7 @@ class Prefs(context: Context) {
             .putBoolean("swipeDownForNotifications", value.swipeDownForNotifications)
             .putBoolean("autoOpenKeyboard", value.autoOpenKeyboard)
             .putBoolean("dimWallpaper", value.dimWallpaper)
+            .putBoolean("dynamicColor", value.dynamicColor)
             .apply()
 
     private companion object {

@@ -115,6 +115,9 @@ fun SettingsScreen(
         item { Header("Look & feel") }
         item { Toggle("Show app icons", settings.showIcons) { v -> onChange { it.copy(showIcons = v) } } }
         item { Toggle("Show clock and date", settings.showClock) { v -> onChange { it.copy(showClock = v) } } }
+        item {
+            Toggle("Match wallpaper colors", settings.dynamicColor) { v -> onChange { it.copy(dynamicColor = v) } }
+        }
         item { Toggle("Dim wallpaper", settings.dimWallpaper) { v -> onChange { it.copy(dimWallpaper = v) } } }
         item {
             Toggle("Notification previews on favorites", settings.notificationPreviews) { v ->
