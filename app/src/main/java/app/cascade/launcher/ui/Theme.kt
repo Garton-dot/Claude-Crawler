@@ -72,14 +72,27 @@ private fun readAccent(context: Context): Color = try {
 }
 
 /**
- * Picks the wallpaper's most prominent color, then lifts its lightness and caps its
- * saturation so it stays readable on the dark overlay. Grayscale wallpapers keep the default.
+ * Picks the most vivid of the wallpaper's three key colors, ignoring near-black and washed-out
+ * ones (a dark wallpaper's "dominant" color is usually just its background). The result gets its
+ * lightness lifted and saturation capped so it stays readable on the dark overlay. Wallpapers
+ * with no vivid color keep the default.
  */
 private fun accentFrom(colors: WallpaperColors?): Color {
-    val primary = colors?.primaryColor ?: return DefaultAccent
+    if (colors == null) return DefaultAccent
+    val hsv = FloatArray(3)
+    val best = listOfNotNull(colors.primaryColor, colors.secondaryColor, colors.tertiaryColor)
+        .map { it.toArgb() }
+        .filter {
+            android.graphics.Color.colorToHSV(it, hsv)
+            hsv[2] >= 0.3f && hsv[1] >= 0.15f
+        }
+        .maxByOrNull {
+            android.graphics.Color.colorToHSV(it, hsv)
+            hsv[1] * hsv[2]
+        } ?: return DefaultAccent
+
     val hsl = FloatArray(3)
-    ColorUtils.colorToHSL(primary.toArgb(), hsl)
-    if (hsl[1] < 0.12f) return DefaultAccent
+    ColorUtils.colorToHSL(best, hsl)
     hsl[1] = hsl[1].coerceIn(0.45f, 0.9f)
     hsl[2] = hsl[2].coerceIn(0.68f, 0.82f)
     return Color(ColorUtils.HSLToColor(hsl))
