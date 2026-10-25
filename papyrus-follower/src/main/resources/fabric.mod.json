@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "papyrus_follower",
+  "version": "${version}",
+  "name": "Papyrus Follower",
+  "description": "THE GREAT PAPYRUS joins your adventure! Feed him spaghetti and he follows you around, fights for you, and chats along the way.",
+  "authors": ["Garton"],
+  "license": "MIT",
+  "icon": "assets/papyrus_follower/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["com.papyrusfollower.PapyrusFollower"],
+    "client": ["com.papyrusfollower.client.PapyrusFollowerClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
